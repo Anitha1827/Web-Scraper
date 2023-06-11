@@ -151,7 +151,7 @@ app.post('/scrape', async (req, res) => {
 app.get('/products', async (req, res) => {
     try {
       const products =await Product.find().lean();
-      res.json(products);
+      res.json(products.splice(0,10));
     } catch (error) {
       console.error('Error fetching products:', error);
       res.status(500).json({ error: 'Internal server error' });
