@@ -151,6 +151,8 @@ app.post('/scrape', async (req, res) => {
 app.get('/products', async (req, res) => {
     try {
       const products =await Product.find().lean();
+      const {q} = req.query;
+      console.log(q)
       res.json(products.splice(0,10));
     } catch (error) {
       console.error('Error fetching products:', error);
